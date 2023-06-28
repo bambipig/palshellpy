@@ -12,7 +12,7 @@ class LocalRunner:
         return self.p
 
     def get_output_run(self, cmd: str):
-        print(cmd)
+        # print(cmd)
         status, output = subprocess.getstatusoutput(cmd)
         return status, output
 
@@ -27,7 +27,7 @@ class LocalRunner:
         self.popen_run(cmd)
         self.flush_output()
         self.p.wait()
-        print('STATUS_CODE', self.p.returncode)
+        # print('STATUS_CODE', self.p.returncode)
         if self.p.returncode != 0:
             raise Exception('Run: [{}] failed.'.format(cmd))
         return self.p.returncode, None
