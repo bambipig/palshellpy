@@ -39,7 +39,7 @@ def sha256sum_data(data: bytes) -> str:
 def make_tar(relative_to: Union[str|PathLike], files: list, tar_file_path: Union[str | PathLike]) -> pathlib.Path:
     with tarfile.open(tar_file_path, "w") as tar:
         for f in files:
-            if not pathlib.Path(relative_to).joinpath(f).exists():
+            if pathlib.Path(relative_to).joinpath(f).exists():
                 tar.add(pathlib.Path(relative_to).joinpath(f), arcname=f)
     return pathlib.Path(tar_file_path)
 
